@@ -3,32 +3,18 @@
   --fg:#101114;
   --muted: rgba(16,17,20,.70);
   --muted2: rgba(16,17,20,.52);
-
-  /* modern neutrals */
   --line: rgba(16,17,20,.12);
   --line2: rgba(16,17,20,.08);
-
-  /* Barry CTA red */
   --red: #c60000;
-
-  /* surfaces */
   --card: rgba(255,255,255,.92);
   --card2: rgba(255,255,255,.72);
-
-  /* radius + shadow */
   --r-lg: 22px;
   --r-md: 18px;
   --r-sm: 14px;
-
   --shadow-sm: 0 6px 18px rgba(0,0,0,.06);
   --shadow-md: 0 16px 42px rgba(0,0,0,.08);
   --shadow-inset: inset 0 1px 0 rgba(255,255,255,.8);
-
-  /* typography */
-  --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --serif: ui-serif, "Georgia", "Times New Roman", Times, serif;
-
-  /* motion */
+  --font: Arial, Helvetica, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --ease: cubic-bezier(.2,.8,.2,1);
 }
 
@@ -38,7 +24,7 @@ html,body{
   margin:0;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--sans);
+  font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -49,7 +35,7 @@ a{ color:inherit; }
   background: rgba(0,0,0,.08);
 }
 
-/* ---------- Centered Stage ---------- */
+
 
 .wrap{
   min-height:100vh;
@@ -62,7 +48,7 @@ a{ color:inherit; }
     radial-gradient(680px 380px at 0% 100%, rgba(0,0,0,.03), transparent 60%);
 }
 
-/* Keep exact layout width */
+
 .layout{
   width: min(980px, 100%);
   margin: 0 auto;
@@ -71,7 +57,7 @@ a{ color:inherit; }
   gap: 16px;
 }
 
-/* Desktop grid: left group + right big area + bottom CTA */
+
 @media (min-width: 900px){
   .layout{
     grid-template-columns: 1.05fr 1.45fr;
@@ -82,7 +68,7 @@ a{ color:inherit; }
   }
 }
 
-/* ---------- Left side (unchanged structure) ---------- */
+
 
 .left{
   display:grid;
@@ -99,7 +85,7 @@ a{ color:inherit; }
   }
 }
 
-/* ---------- Poster frames (modernized) ---------- */
+
 
 .poster{
   border: 1px solid var(--line);
@@ -124,7 +110,7 @@ a{ color:inherit; }
   background: #fff;
 }
 
-/* Subtle lift on hover (desktop) */
+
 @media (hover:hover){
   .poster:hover{
     transform: translateY(-2px);
@@ -133,7 +119,7 @@ a{ color:inherit; }
   }
 }
 
-/* ---------- Note (spans both columns) ---------- */
+
 
 .note{
   grid-column: 1 / -1;
@@ -162,7 +148,7 @@ a{ color:inherit; }
   border-color: rgba(16,17,20,.55);
 }
 
-/* ---------- Boxes (wireframe -> modern cards) ---------- */
+
 
 .box{
   border: 1px solid var(--line);
@@ -211,7 +197,7 @@ a{ color:inherit; }
   font-weight: 600;
 }
 
-/* ---------- Right side (same layout, modern styling) ---------- */
+
 
 @media (min-width: 900px){
   .right{
@@ -227,7 +213,7 @@ a{ color:inherit; }
   gap: 14px;
 }
 
-/* Modern “header” area inside right */
+
 .right-head{
   border: 1px solid var(--line2);
   border-radius: var(--r-md);
@@ -236,12 +222,12 @@ a{ color:inherit; }
   background: linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0,0));
 }
 
-.ttb{
-  font-family: var(--serif);
-  font-size: clamp(30px, 3.2vw, 44px);
-  letter-spacing: .06em;
-  font-weight: 500;
-  text-transform: uppercase;
+.ttb {
+    font-family: var(--font);
+    font-size: clamp(36px, 3.6vw, 52px);
+    letter-spacing: .04em;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .story{
@@ -251,7 +237,7 @@ a{ color:inherit; }
   color: var(--muted);
 }
 
-/* Main synopsis area */
+
 .right-body{
   flex:1;
   border: 1px solid var(--line2);
@@ -280,7 +266,7 @@ a{ color:inherit; }
   color: var(--muted);
 }
 
-/* ---------- CTA bottom (modern underline, keeps red) ---------- */
+
 
 .cta{
   border: 1px solid var(--line);
@@ -301,7 +287,7 @@ a{ color:inherit; }
 .cta-link{
   display:inline-block;
   color: var(--red);
-  text-decoration: none; /* we replace with animated underline */
+  text-decoration: none;
   font-style: italic;
   font-size: 16px;
   letter-spacing: .02em;
@@ -336,7 +322,7 @@ a{ color:inherit; }
   text-transform: uppercase;
 }
 
-/* ---------- Accessibility focus ---------- */
+
 
 a:focus-visible{
   outline: 2px solid rgba(0,0,0,.45);
@@ -344,7 +330,7 @@ a:focus-visible{
   border-radius: 8px;
 }
 
-/* ---------- Responsive polish ---------- */
+
 
 @media (max-width: 520px){
   .wrap{ padding: 40px 14px; }
