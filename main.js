@@ -180,7 +180,7 @@ function randAroundCenter() {
 function triggerWipeAndGoPage2() {
   wipe.classList.add("is-on");
   window.setTimeout(() => {
-    window.location.href = "./page2.html";
+    window.location.href = "./home.html";
   }, GO_PAGE2_AFTER);
 }
 
