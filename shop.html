@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shop - THE TIME BEING</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
+    <meta name="description" content="Shop: ebook + screenplays" />
+
+    <style>
+      :root {
+        --bg: #ffffff;
+        --fg: #101114;
+        --muted: rgba(16, 17, 20, 0.72);
+        --line: rgba(16, 17, 20, 0.12);
+        --card: rgba(16, 17, 20, 0.04);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --r-lg: 22px;
+        --r-md: 18px;
+        --r-sm: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        background:
+          radial-gradient(
+            1200px 800px at 50% 20%,
+            rgba(255, 255, 255, 0.06),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--fg);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 18px;
+      }
+
+      /* ---------- Topbar ---------- */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .topbar__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 66px;
+        gap: 14px;
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        opacity: 0.95;
+      }
+
+      .topbar__nav {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .topbar__link {
+        font-size: 14px;
+        opacity: 0.78;
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        transition:
+          opacity 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .topbar__link:hover {
+        opacity: 0.98;
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .topbar__link.is-active {
+        opacity: 1;
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        font-size: 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      @media (max-width: 760px) {
+        .topbar__inner {
+          height: auto;
+          padding: 12px 0;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .topbar__nav {
+          justify-content: flex-start;
+        }
+        .btn {
+          width: 100%;
+        }
+      }
+
+      /* ---------- Custom product search ---------- */
+      .shop-search {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .shop-search__input {
+        width: 100%;
+        height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--fg);
+        outline: none;
+      }
+
+      .shop-search__input::placeholder {
+        color: rgba(16, 17, 20, 0.55);
+      }
+
+      .shop-search__input:focus {
+        border-color: rgba(16, 17, 20, 0.28);
+      }
+
+      .shop-search__btn {
+        height: 42px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(16, 17, 20, 0.06);
+        color: var(--fg);
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .shop-search__btn:hover {
+        background: rgba(16, 17, 20, 0.1);
+      }
+      /* ---------- Page ---------- */
+      .hero {
+        padding: clamp(34px, 5vw, 62px) 0 18px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 44px);
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .hero p {
+        margin: 12px auto 0;
+        max-width: 70ch;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .shop {
+        padding: 18px 0 clamp(48px, 6vw, 84px);
+      }
+
+      .shop__grid {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: var(--r-md);
+        background: var(--card);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: var(--shadow);
+        padding: 14px;
+      }
+
+      .card--sticky {
+        position: sticky;
+        top: 88px; /* topbar(66) + margen */
+      }
+
+      .stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .hint {
+        font-size: 12px;
+        color: var(--muted);
+        opacity: 0.9;
+      }
+
+      @media (max-width: 980px) {
+        .shop__grid {
+          grid-template-columns: 1fr;
+        }
+        .card--sticky {
+          position: static;
+        }
+      }
+      html#ecwid_html body#ecwid_body div.ecwid-productBrowser {
+        padding: 0 10px 20px;
+        background-color: rgba(255, 255, 255, 0.04) !important;
+      }
+
+      /* ---------- Ecwid theming (soft) ---------- */
+      .ecwid,
+      .ecwid * {
+        font-family: inherit !important;
+      }
+
+      /* Inputs / buttons */
+      .ecwid input,
+      .ecwid select,
+      .ecwid textarea {
+        border-radius: 12px !important;
+      }
+
+      .ecwid button,
+      .ecwid .form-control__button,
+      .ecwid .button,
+      .ecwid .btn {
+        border-radius: 999px !important;
+      }
+
+      .ecwid a {
+        text-decoration: none;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 22px 0;
+        color: var(--muted);
+        text-align: center;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="container topbar__inner">
+        <a class="brand" href="index.html" aria-label="Go to home"
+          >The Time Being</a
+        >
+
+        <nav class="topbar__nav" aria-label="Primary navigation">
+          <!-- <a class="topbar__link" href="index.html">Home</a>
+          <a class="topbar__link" href="index.html#screenplays">Screenplays</a>
+          <a class="topbar__link is-active" href="shop.html">Shop</a>
+          <a class="topbar__link" href="index.html#contact">Contact</a> -->
+        </nav>
+
+        <!-- <a class="btn" href="index.html#contact">Email</a> -->
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <h1>Shop</h1>
+        <p>THE TIME BEING — ebook + related materials.</p>
+      </div>
+    </section>
+
+    <!-- Shop -->
+    <section class="shop">
+      <div class="container">
+        <!-- Anchor para cargar script Ecwid sin ensuciar el layout -->
+        <div id="ecwid-script-anchor"></div>
+
+        <div class="shop__grid">
+          <!-- Sidebar -->
+          <aside class="stack">
+            <div class="card card--sticky">
+              <div class="stack">
+                <!-- <div class="hint">Categories</div>
+                <div id="my-categories-125806803"></div> -->
+
+                <!-- <div class="hint">Search products</div> -->
+
+                <form
+                  class="shop-search"
+                  id="shopSearchForm"
+                  role="search"
+                  aria-label="Search products"
+                >
+                  <input
+                    class="shop-search__input"
+                    id="shopSearchInput"
+                    type="search"
+                    placeholder="Search products…"
+                    autocomplete="off"
+                  />
+                  <button class="shop-search__btn" type="submit">Search</button>
+                </form>
+
+                <div class="hint" id="shopSearchHint" style="display: none">
+                  Searching…
+                </div>
+
+                <!-- <div class="hint">Cart</div>
+                <div id="my-cart-125806803"></div> -->
+              </div>
+            </div>
+          </aside>
+
+          <!-- Catalog -->
+          <main class="card" aria-label="Shop catalog">
+            <div id="my-store-125806803"></div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">© <span id="year"></span> The Time Being</div>
+    </footer>
+
+    <!-- Ecwid script (solo una vez por página) -->
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      (function loadEcwid() {
+        if (document.getElementById("ecwid-jssdk")) return;
+
+        var s = document.createElement("script");
+        s.id = "ecwid-jssdk";
+        s.charset = "utf-8";
+        s.type = "text/javascript";
+        s.src =
+          "https://app.ecwid.com/script.js?125806803&data_platform=code&data_date=2026-02-03";
+        document.getElementById("ecwid-script-anchor").appendChild(s);
+
+        s.onload = function () {
+          // Si NO estás usando categorías/cart, podés borrar estos 2 if (no molestan, pero no aportan)
+          if (
+            document.getElementById("my-categories-125806803") &&
+            window.xCategoriesV2
+          ) {
+            window.xCategoriesV2("my-categories-125806803");
+          }
+
+          if (
+            document.getElementById("my-cart-125806803") &&
+            window.xMinicart
+          ) {
+            window.xMinicart("my-cart-125806803", "layout=attachToCategories");
+          }
+
+          // Storefront / product browser (render de la tienda embebida)
+          if (window.xProductBrowser) {
+            window.xProductBrowser(
+              "categoriesPerRow=3",
+              "views=grid(20,3) list(60) table(60)",
+              "categoryView=grid",
+              "searchView=list",
+              "id=my-store-125806803",
+            );
+          }
+
+          // Conectar tu buscador custom a la búsqueda de productos
+          (function wireProductSearch() {
+            var form = document.getElementById("shopSearchForm");
+            var input = document.getElementById("shopSearchInput");
+            var hint = document.getElementById("shopSearchHint");
+
+            if (!form || !input) return;
+
+            form.addEventListener("submit", function (ev) {
+              ev.preventDefault();
+              var q = (input.value || "").trim();
+              if (!q) return;
+
+              if (hint) hint.style.display = "block";
+
+              // Abre resultados de búsqueda dentro del product browser
+              if (window.Ecwid && typeof window.Ecwid.openPage === "function") {
+                window.Ecwid.openPage("search", { keyword: q });
+              }
+
+              // UX: scrollear al catálogo
+              var store = document.querySelector("#my-store-125806803");
+              setTimeout(function () {
+                if (store)
+                  store.scrollIntoView({ behavior: "smooth", block: "start" });
+                if (hint) hint.style.display = "none";
+              }, 200);
+            });
+          })();
+        };
+      })();
+
+      // Opcional: scroll al catálogo si el user toca categorías (solo si usás categorías)
+      document.addEventListener("click", function (e) {
+        var cat = e.target.closest("#my-categories-125806803");
+        if (!cat) return;
+        var store = document.querySelector("#my-store-125806803");
+        if (!store) return;
+        setTimeout(function () {
+          store.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 150);
+      });
+    </script>
+  </body>
+</html>
