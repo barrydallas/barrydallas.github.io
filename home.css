@@ -408,3 +408,45 @@ a:focus-visible {
     width: 100%;
   }
 }
+
+.note-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0 8px;
+}
+
+.note-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 17, 20, 0.12);
+  background: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.note-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.cta-meta {
+  opacity: 0.75;
+  font-weight: 400;
+}
+
+.right-buy {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  opacity: 0.82;
+  border-bottom: 1px solid rgba(16, 17, 20, 0.18);
+  padding-bottom: 2px;
+}
+
+.right-buy:hover {
+  opacity: 1;
+}
