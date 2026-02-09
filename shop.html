@@ -48,7 +48,7 @@
             <div class="card card--sticky">
               <div class="stack">
                 <!-- <div class="hint">Categories</div>
-                <div id="my-categories-125806803"></div> -->
+                <div id="my-categories-130788264"></div> -->
 
                 <!-- <div class="hint">Search products</div> -->
 
@@ -73,14 +73,14 @@
                 </div>
 
                 <!-- <div class="hint">Cart</div>
-                <div id="my-cart-125806803"></div> -->
+                <div id="my-cart-130788264"></div> -->
               </div>
             </div>
           </aside>
 
           <!-- Catalog -->
           <main class="card" aria-label="Shop catalog">
-            <div id="my-store-125806803"></div>
+            <div id="my-store-130788264"></div>
           </main>
         </div>
       </div>
@@ -98,30 +98,30 @@
         if (document.getElementById("ecwid-jssdk")) return;
 
         console.log("Ecwid loaded:", !!window.Ecwid);
-        console.log("StoreID in script:", "125806803");
+        console.log("StoreID in script:", "130788264");
 
         var s = document.createElement("script");
         s.id = "ecwid-jssdk";
         s.charset = "utf-8";
         s.type = "text/javascript";
         s.src =
-          "https://app.ecwid.com/script.js?125806803&data_platform=code&data_date=2026-02-03";
+          "https://app.ecwid.com/script.js?130788264&data_platform=code&data_date=2026-02-03";
         document.getElementById("ecwid-script-anchor").appendChild(s);
 
         s.onload = function () {
           // Si NO estás usando categorías/cart, podés borrar estos 2 if (no molestan, pero no aportan)
           if (
-            document.getElementById("my-categories-125806803") &&
+            document.getElementById("my-categories-130788264") &&
             window.xCategoriesV2
           ) {
-            window.xCategoriesV2("my-categories-125806803");
+            window.xCategoriesV2("my-categories-130788264");
           }
 
           if (
-            document.getElementById("my-cart-125806803") &&
+            document.getElementById("my-cart-130788264") &&
             window.xMinicart
           ) {
-            window.xMinicart("my-cart-125806803", "layout=attachToCategories");
+            window.xMinicart("my-cart-130788264", "layout=attachToCategories");
           }
 
           // Storefront / product browser (render de la tienda embebida)
@@ -131,7 +131,7 @@
               "views=grid(20,3) list(60) table(60)",
               "categoryView=grid",
               "searchView=list",
-              "id=my-store-125806803"
+              "id=my-store-130788264"
             );
           }
 
@@ -156,7 +156,7 @@
               }
 
               // UX: scrollear al catálogo
-              var store = document.querySelector("#my-store-125806803");
+              var store = document.querySelector("#my-store-130788264");
               setTimeout(function () {
                 if (store)
                   store.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -169,9 +169,9 @@
 
       // Opcional: scroll al catálogo si el user toca categorías (solo si usás categorías)
       document.addEventListener("click", function (e) {
-        var cat = e.target.closest("#my-categories-125806803");
+        var cat = e.target.closest("#my-categories-130788264");
         if (!cat) return;
-        var store = document.querySelector("#my-store-125806803");
+        var store = document.querySelector("#my-store-130788264");
         if (!store) return;
         setTimeout(function () {
           store.scrollIntoView({ behavior: "smooth", block: "start" });
