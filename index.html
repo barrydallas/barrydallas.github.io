@@ -8,19 +8,25 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Overlay UI -->
     <header class="top">
       <h1 id="title">THE TIME BEING</h1>
-      <div id="author">Etienne de Montebello</div>
+      <div class="credits">
+        <div id="author">Etienne de Montebello</div>
+        <div class="by-raven3">
+          <a
+            href="https://raven3.com.ar"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Website developed by Raven3"
+          >
+            byRaven3
+          </a>
+        </div>
+      </div>
     </header>
 
-    <!-- Three.js canvas container -->
     <div id="stage"></div>
-
-    <!-- Fullscreen white wipe -->
     <div id="wipe" aria-hidden="true"></div>
-
-    <!-- Three.js (module) -->
     <script type="module" src="main.js"></script>
   </body>
 </html>
